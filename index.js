@@ -1,6 +1,9 @@
-import { Client } from 'discord.js';
-const client = new Client();
-import { prefix, token } from './config.json';
+const Discord = require('discord.js');
+const client = new Discord.Client();
+const {
+	prefix,
+	token,
+} = require('./config.json');
 
 client.login(token);
 
