@@ -1,1 +1,5 @@
 theme: jekyll-theme-cayman
+title: YADOB
+description: Yet Another Open Discord Bot
+show_downloads: true
+google_analytics: UA-156012637-5
