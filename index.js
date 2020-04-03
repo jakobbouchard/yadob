@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const bot = new Discord.Client();
-const {prefix, token} = require('./config.json');
+let {prefix, token} = require('./config.json');
 const path = require('path');
 const fs = require('fs');
 const directoryPath = path.join(__dirname + '/commands');
@@ -28,7 +28,7 @@ bot.on('message', message => {
   if (message.author.bot) return;
   if (!normalizedMessage.startsWith(prefix)) return;
   commandList.forEach(function(item) {
-    if (normalizedMessage == prefix + item) {
+    if (normalizedMessage.startsWith(prefix + item)) {
       commands[item](message, commandList);
     }
   })
