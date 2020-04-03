@@ -29,7 +29,7 @@ bot.on('message', message => {
   if (!normalizedMessage.startsWith(prefix)) return;
   commandList.forEach(function(item) {
     if (normalizedMessage == prefix + item) {
-      commands[item](message)
+      commands[item](message, commandList);
     }
   })
 });
