@@ -1,4 +1,5 @@
 # What makes this bot special
+
 Honestly, nothing really. I just wanted to learn Discord's API as well as how to make a bot. The COVID-19 quarantine makes us do lots of stuff.
 
 However, since I'm making a bot, might as well go all in. Here are some of the features I want the bot to have at some point:
@@ -14,16 +15,26 @@ Now to contradicting myself, I would like this bot to be *as lightweight as poss
 
 ## Help
 ### Usage: `help`
+
 Currently, the help command only lists all available commands, however, I'd like it to also give more info about commands.
 
 ## Nickname
 ### Usage: `nickname <nickname | clear>`
+
 Allows people to change or clear the bot's nickname.
 
 ## Ping
 ### Usage: `ping`
+
 Outputs the bot's latency to Discord's servers.
+
+## Reaction Role
+### Usage: `reactionrole`
+
+Creates a message with an embed using the specified settings in `reactionrole-config.json`.
+> [Known bug](https://github.com/jakobbouchard/yadob/issues/3): The reaction role doesn't work after the bot shuts down. For now, you will need to recreate a reaction role each time you restart the bot. Which loses the reaction numbers. I am working on this.
 
 ## Support
 ### Usage: `support`
+
 Links to this website as well as the issue form on GitHub
