@@ -9,16 +9,14 @@ module.exports = (message, commandList) => {
       url: 'https://yadob.jakobbouchard.dev',
     },
     description: `Here are all the commands you can use.
-    For more help, you can access the documentation here: https://yadob.jakobbouchard.dev`,
+                  You can also [access the documentation](https://yadob.jakobbouchard.dev)
+                  \u200b`,
     fields: [
       {
         name: 'Commands',
         value: listCommands(),
       },
-    ],
-    footer: {
-      text: 'Made by Jakob Bouchard',
-    }
+    ]
   }
   
   function listCommands() {
