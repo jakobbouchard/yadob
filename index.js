@@ -1,20 +1,31 @@
 const Discord = require('discord.js');
-const client = new Discord.Client();
-const {
-	prefix,
-	token,
-} = require('./config.json');
+const bot = new Discord.Client();
+const {prefix, token} = require('./config.json');
+const path = require('path');
+const fs = require('fs');
+const directoryPath = path.join(__dirname + '/commands');
+let commands = {};
 
-client.login(token);
-
-client.on('ready', () => {
-  console.log(`Logged in as ${client.user.tag}!`);
+fs.readdir(directoryPath, function (err, files) {
+  if (err) {
+    return console.log('Unable to scan directory: ' + err);
+  }
+  files.forEach(function (file) {
+    commands[file.replace('.js', '')] = require('./commands/' + file);
+  });
 });
 
-client.on('message', message => {
+
+bot.login(token);
+
+bot.on('ready', () => {
+  console.log(`Logged in as ${bot.user.tag}!`);
+});
+
+bot.on('message', message => {
   if (message.author.bot) return;
   if (!message.content.startsWith(prefix)) return;
   if (message.content == `${prefix}ping`) {
-    message.reply("Pong!");
+    commands.ping(message)
   }
 });
