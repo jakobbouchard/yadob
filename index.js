@@ -1,21 +1,7 @@
 const Discord = require('discord.js');
 const client = new Discord.Client({ disableEveryone: true });
-let {prefix, token} = require('./config.json');
-const path = require('path');
-const fs = require('fs');
-const directoryPath = path.join(__dirname + '/commands');
-let commands = {};
-
-fs.readdir(directoryPath, function (err, files) {
-  if (err) {
-    return console.log('Unable to scan directory: ' + err);
-  }
-  console.log(`Loading a total of ${files.length} commands.`);
-  files.forEach(function (file) {
-    commands[file.replace('.js', '')] = require('./commands/' + file);
-    console.log(`Command Loaded! ${file}`);
-  });
-});
+const {token} = require('./config.js');
+const commands = require('./commands')
 
 client.login(token)
   .then(() => console.log(`\nLogged in successfully as ${client.user.tag}!`))
