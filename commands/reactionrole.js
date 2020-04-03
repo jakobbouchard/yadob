@@ -1,7 +1,7 @@
 // Currently based on https://github.com/Sam-DevZ/Discord-RoleReact
 
 module.exports = (message, commandList, client) => {
-  const { MessageEmbed, Emoji, MessageReaction } = require('discord.js');
+  const { TextChannel, MessageEmbed, Emoji, MessageReaction } = require('discord.js');
   const CONFIG = require('../reactionrole-config.json');
 
   if (CONFIG.roles.length !== CONFIG.reactions.length)
@@ -83,18 +83,17 @@ module.exports = (message, commandList, client) => {
     if (!events.hasOwnProperty(event.t)) return;
 
     const { d: data } = event;
-    const user = client.users.get(data.user_id);
-    const channel = client.channels.get(data.channel_id);
-
-    const message = await channel.fetchMessage(data.message_id);
-    const member = message.guild.members.get(user.id);
+    const user = await client.users.fetch(data.user_id);
+    const channel = client.channels.cache.get(data.channel_id)
+    const message = await channel.messages.fetch(data.message_id);
+    const member = await message.guild.members.fetch(user);
 
     const emojiKey = (data.emoji.id) ? `${data.emoji.name}:${data.emoji.id}` : data.emoji.name;
-    let reaction = message.reactions.get(emojiKey);
+    let reaction = message.reactions.resolve(emojiKey);
 
     if (!reaction) {
       // Create an object that can be passed through the event like normal
-      const emoji = new Emoji(client.guilds.get(data.guild_id), data.emoji);
+      const emoji = new Emoji(client.guilds.cache.fetch(data.guild_id), data.emoji);
       reaction = new MessageReaction(message, emoji, 1, data.user_id === client.user.id);
     }
 
@@ -105,24 +104,19 @@ module.exports = (message, commandList, client) => {
       (message.author.id === client.user.id) && (message.content !== CONFIG.initialMessage || 
       (message.embeds[0] && (embedFooterText !== CONFIG.embedFooter)))
     ) {
-      if (!CONFIG.embed && (message.embeds.length < 1)) {
-          const re = `\\*\\*"(.+)?(?="\\*\\*)`;
-          const role = message.content.match(re)[1];
+      const fields = message.embeds[0].fields;
 
-          if (member.id !== client.user.id) {
-            const guildRole = message.guild.roles.fetch(r => r.name === role);
-            if (event.t === "MESSAGE_REACTION_ADD") member.addRole(guildRole.id);
-            else if (event.t === "MESSAGE_REACTION_REMOVE") member.removeRole(guildRole.id);
-          }
-      } else if (CONFIG.embed && (message.embeds.length >= 1)) {
-        const fields = message.embeds[0].fields;
-
-        for (const { name, value } of fields) {
-          if (member.id !== client.user.id) {
-            const guildRole = message.guild.roles.fetch(r => r.name === value);
-            if ((name === reaction.emoji.name) || (name === reaction.emoji.toString())) {
-              if (event.t === "MESSAGE_REACTION_ADD") member.addRole(guildRole.id);
-              else if (event.t === "MESSAGE_REACTION_REMOVE") member.removeRole(guildRole.id);
+      for (const { name, value } of fields) {
+        if (member.id !== client.user.id) {
+          const guildRole = message.guild.roles.cache.find(role => role.name === value);
+          console.log(guildRole)
+          if ((name === reaction.emoji.name) || (name === reaction.emoji.toString())) {
+            if (event.t === "MESSAGE_REACTION_ADD") {
+              member.roles.add(guildRole.id)
+                .catch(error => {console.error(error)});
+            } else if (event.t === "MESSAGE_REACTION_REMOVE") {
+              member.roles.remove(guildRole.id)
+                .catch(error => {console.error(error)});
             }
           }
         }

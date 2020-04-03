@@ -30,7 +30,7 @@ client.on('error', console.error);
 client.on('message', message => {
   const commandList = Object.keys(commands);
   const normalizedMessage = message.content.toLowerCase();
-
+message.reactions.cache.f
   if (message.author.bot) return;
   if (!normalizedMessage.startsWith(prefix)) return;
   commandList.forEach(function(item) {
