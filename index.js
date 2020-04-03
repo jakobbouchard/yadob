@@ -15,7 +15,6 @@ fs.readdir(directoryPath, function (err, files) {
   });
 });
 
-
 bot.login(token);
 
 bot.on('ready', () => {
@@ -23,9 +22,14 @@ bot.on('ready', () => {
 });
 
 bot.on('message', message => {
+  const commandList = Object.keys(commands);
+  const normalizedMessage = message.content.toLowerCase();
+
   if (message.author.bot) return;
-  if (!message.content.startsWith(prefix)) return;
-  if (message.content == `${prefix}ping`) {
-    commands.ping(message)
-  }
+  if (!normalizedMessage.startsWith(prefix)) return;
+  commandList.forEach(function(item) {
+    if (normalizedMessage == prefix + item) {
+      commands[item](message)
+    }
+  })
 });
