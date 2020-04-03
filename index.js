@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-const client = new Discord.Client();
+const client = new Discord.Client({ disableEveryone: true });
 let {prefix, token} = require('./config.json');
 const path = require('path');
 const fs = require('fs');
@@ -24,6 +24,8 @@ client.login(token)
 client.on('ready', () => {
   client.user.setActivity(`${prefix}help`, { type: 'LISTENING' })
 });
+
+client.on('error', console.error);
 
 client.on('message', message => {
   const commandList = Object.keys(commands);
