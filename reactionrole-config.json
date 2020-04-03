@@ -1,0 +1,12 @@
+{
+  "deleteSetupCMD": true,
+  "initialMessage": "**React to the messages below to receive the associated role. If you would like to remove the role, simply remove your reaction!**",
+  "embedMessage": "React to the emoji that matches the role you wish to receive. \n If you would like to remove the role, simply remove your reaction!",
+  "embedFooter": "Role Reactions",
+  "roles": ["Test1", "Test2"],
+  "reactions": ["💻", "🖌"],
+  "embed": true,
+  "embedColor": "#dd9323",
+  "embedThumbnail": false,
+  "embedThumbnailLink": ""
+}

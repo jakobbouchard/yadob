@@ -35,7 +35,7 @@ client.on('message', message => {
   if (!normalizedMessage.startsWith(prefix)) return;
   commandList.forEach(function(item) {
     if (normalizedMessage.startsWith(prefix + item)) {
-      commands[item](message, commandList);
+      commands[item](message, commandList, client);
     }
   })
 });
