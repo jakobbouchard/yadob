@@ -1,13 +1,25 @@
 module.exports = (message, commandList) => {
-  const Discord = require('discord.js');
   const {prefix} = require('../config.json');
-  const helpEmbed = new Discord.MessageEmbed()
-  .setColor('#18bc9c')
-  .setTitle('YADOB Help')
-	.setDescription('You can access the documentation here: https://yadob.jakobbouchard.dev')
-  .addField('Commands', listCommands())
-  .setTimestamp()
-  .setFooter('YADOB');
+  const helpEmbed = {
+    color: 0x18bc9c,
+    title: 'Help',
+    author: {
+      name: 'YADOB',
+      icon_url: 'https://i.imgur.com/wSTFkRM.png',
+      url: 'https://yadob.jakobbouchard.dev',
+    },
+    description: `Here are all the commands you can use.
+    For more help, you can access the documentation here: https://yadob.jakobbouchard.dev`,
+    fields: [
+      {
+        name: 'Commands',
+        value: listCommands(),
+      },
+    ],
+    footer: {
+      text: 'Made by Jakob Bouchard',
+    }
+  }
   
   function listCommands() {
     let result = '';
@@ -16,5 +28,5 @@ module.exports = (message, commandList) => {
     })
     return result;
   }
-  message.channel.send(helpEmbed).catch(e => console.log(e));
+  message.channel.send({ embed: helpEmbed }).catch(e => console.log(e));
 }
