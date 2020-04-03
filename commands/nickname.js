@@ -14,7 +14,7 @@ module.exports = (message) => {
   } else if (params.length > 32) {
     nicknameEmbed.description = `A nickname must be between 1 and 32 characters.`;
   } else if (params == 'clear') {
-    message.guild.me.setNickname()
+    message.guild.me.setNickname('')
       .then(nicknameEmbed.description = `Nickname cleared!`)
       .catch(console.error)
   } else {
