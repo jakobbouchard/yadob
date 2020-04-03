@@ -17,22 +17,23 @@ fs.readdir(directoryPath, function (err, files) {
   });
 });
 
-client.login(token);
+client.login(token)
+  .then(() => console.log(`\nLogged in successfully as ${client.user.tag}!`))
+  .catch(console.error);
 
 client.on('ready', () => {
-  console.log(`Logged in as ${client.user.tag}!`);
+  client.user.setActivity(`${prefix}help`, { type: 'LISTENING' })
 });
 
 client.on('message', message => {
   const commandList = Object.keys(commands);
   const normalizedMessage = message.content.toLowerCase();
-  console.log(normalizedMessage)
 
   if (message.author.bot) return;
   if (!normalizedMessage.startsWith(prefix)) return;
   commandList.forEach(function(item) {
     if (normalizedMessage.startsWith(prefix + item)) {
-      commands[item](message, client, commandList);
+      commands[item](message, commandList);
     }
   })
 });
