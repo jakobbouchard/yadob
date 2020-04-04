@@ -1,4 +1,4 @@
-module.exports = (message, commandList) => {
+module.exports = (client, message, params) => {
   const {prefix} = require('../config.js');
   const helpEmbed = {
     color: 0x18bc9c,
@@ -18,11 +18,11 @@ module.exports = (message, commandList) => {
       },
     ]
   }
-  
   function listCommands() {
     let result = '';
-    commandList.forEach(function(item) {
-      result += `**${prefix+item}**\n`;
+    commandList = Array.from(client.commands.keys())
+    commandList.forEach(command => {
+      result += `**${prefix+command}**\n`;
     })
     return result;
   }

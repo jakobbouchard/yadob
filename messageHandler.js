@@ -17,8 +17,9 @@ module.exports = message => {
     cmd = client.commands.get(client.aliases.get(command));
   }
   if (cmd) {
-    cmd.run(client, message, params);
-    console.log("Command: /" + cmd.help.name)
+    cmd(client, message, params);
+    // cmd.run(client, message, params);
+    // console.log("Command: /" + cmd.help.name)
     console.log("Guild: " + message.guild.name)
   }
 };

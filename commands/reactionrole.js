@@ -1,6 +1,6 @@
 // Currently based on https://github.com/Sam-DevZ/Discord-RoleReact
 
-module.exports = (message, commandList, client) => {
+module.exports = (client, message, params) => {
   const { MessageEmbed, Emoji, MessageReaction } = require('discord.js');
   const CONFIG = require('../reactionrole-config.json');
 

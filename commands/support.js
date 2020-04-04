@@ -1,4 +1,4 @@
-module.exports = (message) => {
+module.exports = (client, message, params) => {
   const supportEmbed = {
     color: 0x18bc9c,
     title: 'Support',
