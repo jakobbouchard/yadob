@@ -20,14 +20,14 @@ module.exports = (client, message, params) => {
         nicknameEmbed.description = `Nickname cleared!`;
         log.info(`Nickname cleared in guild ${message.guild}!`)
       })
-      .catch(console.error)
+      .catch(err => log.error(err))
   } else {
     message.guild.me.setNickname(params)
       .then(() => {
         nicknameEmbed.description = `Nickname changed to ${params}!`;
         log.info(`Nickname changed to ${params} in guild ${message.guild}!`)
       })
-      .catch(console.error)
+      .catch(err => log.error(err))
   };
 
   message.channel.send({ embed: nicknameEmbed }).catch(err => log.error(err));
