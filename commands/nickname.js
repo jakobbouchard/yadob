@@ -16,11 +16,17 @@ module.exports = (client, message, params) => {
     nicknameEmbed.description = `A nickname must be between 1 and 32 characters.`;
   } else if (params == 'clear') {
     message.guild.me.setNickname('')
-      .then(nicknameEmbed.description = `Nickname cleared!`)
+      .then(() => {
+        nicknameEmbed.description = `Nickname cleared!`;
+        log.info(`Nickname cleared in guild ${message.guild}!`)
+      })
       .catch(console.error)
   } else {
     message.guild.me.setNickname(params)
-      .then(nicknameEmbed.description = `Nickname changed to ${params}!`)
+      .then(() => {
+        nicknameEmbed.description = `Nickname changed to ${params}!`;
+        log.info(`Nickname changed to ${params} in guild ${message.guild}!`)
+      })
       .catch(console.error)
   };
 
