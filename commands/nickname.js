@@ -1,5 +1,4 @@
-module.exports = (message) => {
-  let params = message.content.toLowerCase().split(' ').slice(1).toString();
+module.exports = (client, message, params) => {
   let nicknameEmbed = {
     color: 0x18bc9c,
     title: 'Nickname',

@@ -1,4 +1,4 @@
-module.exports = (message) => {
+module.exports = (client, message, params) => {
   let pingEmbed = {
     color: 0x18bc9c,
     title: 'Ping',
