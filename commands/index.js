@@ -1,38 +1,38 @@
-const path = require('path');
-const fs = require('fs');
-const directoryPath = path.join(__dirname);
-let commands = {};
+const Discord = require('discord.js');
+const fileSystem = require('fs');
 
-fs.readdir(directoryPath, function (err, files) {
-  if (err) {
-    return console.log('Unable to scan directory: ' + err);
-  }
-  console.log(`Loading a total of ${files.length} commands.`);
-  files.forEach(function (file) {
-    commands[file.replace('.js', '')] = require(file);
-    console.log(`Command Loaded! ${file}`);
-  });
-});
+// fs.readdir(__dirname, function (err, files) {
+//   if (err) {
+//     return console.error('Unable to scan directory: ' + err);
+//   }
+//   console.log(`Loading a total of ${files.length} commands.`);
+//   files.forEach(function (file) {
+//     exports[file.replace('.js', '')] = require(`${__dirname}\\${file}`);
+//     console.log(`Command Loaded! ${file}`);
+//   });
+// });
 
-// const fs = require("fs")
-// bot.commands = new Discord.Collection();
-// bot.aliases = new Discord.Collection();
+module.exports = client => {
+  client.commands = new Discord.Collection();
+  client.aliases = new Discord.Collection();
+  
+  fileSystem.readdir(__dirname, (err, files) => {
+    if (err) {
+      return console.error('[ERROR] Unable to scan directory: ' + err);
+    }
+  
+    let commandFiles = files.filter(file => file.split(".").pop() === "js")
+    if(commandFiles.length <= 0) {
+      return console.log("[LOGS] No commands were found.")
+    }
 
-// fs.readdir("./commands/",(err,files) =>{
-//     if(err) console.log(err)
-
-//     let jsfile = files.filter(f => f.split(".").pop() ==="js")
-//     if(jsfile.lenght <= 0) {
-//         return console.log("[LOGS] Não foram encontrados comandos.")
-//     }
-
-//     jsfile.forEach((f,i) => {
-//         let pull = require(`./commands/${f}`)
-//         bot.commands.set(pull.config.name, pull);
-//         pull.config.aliases.forEach(alias =>{
-//             bot.aliases.set(alias, pull.config.name)
-//         })
-//     })
-// })
-
-module.exports = commands;
+    commandFiles.forEach((file) => {
+      let command = require(`${__dirname}\\${file}`);
+      client.commands.set(file.replace('.js', ''), command);
+      // command.config.aliases.forEach(alias =>{
+      //   client.aliases.set(alias, command.config.name)
+      // })
+      console.log(`[LOG] Command loaded - ${file}`);
+    })
+  })
+}
