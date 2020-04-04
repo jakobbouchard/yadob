@@ -16,9 +16,11 @@ module.exports = client => {
     }
 
     commandFiles.forEach((file) => {
-      let command = require(`${__dirname}\\${file}`);
-      client.commands.set(file.replace('.js', ''), command);
-      console.log(`[LOG] Command loaded - ${file}`);
+      if (file != '_loader.js') {
+        let command = require(`${__dirname}\\${file}`);
+        client.commands.set(file.replace('.js', ''), command);
+        console.log(`[LOG] Command loaded - ${file}`);
+      }
     })
   })
 }
