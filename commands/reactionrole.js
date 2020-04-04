@@ -2,7 +2,7 @@
 
 module.exports = (client, message, params) => {
   const { MessageEmbed, Emoji, MessageReaction } = require('discord.js');
-  const CONFIG = require('../reactionrole-config.json');
+  const CONFIG = require(`./reactionrole.json`);
 
   if (CONFIG.roles.length !== CONFIG.reactions.length)
     throw "Roles list and reactions list are not the same length! Please double check this in the config.js file";
@@ -113,13 +113,13 @@ module.exports = (client, message, params) => {
             if (event.t === "MESSAGE_REACTION_ADD") {
               member.roles.add(guildRole.id)
                 .then(() => {
-                  console.error(`[LOG] Added role ${guildRole.name} to user ${member.user} in guild ${member.guild}`)
+                  console.error(`[LOG] Added role ${guildRole.name} to user ${member.user.tag} in guild ${member.guild}`)
                 })
                 .catch(error => {console.error(`[ERROR] ${error}`)});
             } else if (event.t === "MESSAGE_REACTION_REMOVE") {
               member.roles.remove(guildRole.id)
                 .then(() => {
-                  console.error(`[LOG] Removed role ${guildRole.name} to user ${member.user} in guild ${member.guild}`)
+                  console.error(`[LOG] Removed role ${guildRole.name} to user ${member.user.tag} in guild ${member.guild}`)
                 })
                 .catch(error => {console.error(`[ERROR] ${error}`)});
             }
