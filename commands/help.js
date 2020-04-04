@@ -1,5 +1,5 @@
 module.exports = (message, commandList) => {
-  const {prefix} = require('../config.json');
+  const {prefix} = require('../config.js');
   const helpEmbed = {
     color: 0x18bc9c,
     title: 'Help',
