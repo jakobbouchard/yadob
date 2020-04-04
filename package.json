@@ -1,7 +1,7 @@
 {
   "name": "yadob",
-  "version": "0.2.0",
-  "description": "Yet Another Discord Bot",
+  "version": "0.3.0",
+  "description": "Yet Another Discord Open Bot",
   "main": "index.js",
   "dependencies": {
     "discord.js": "^12.1.1"
