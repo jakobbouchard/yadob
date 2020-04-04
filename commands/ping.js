@@ -1,3 +1,4 @@
+const log = require('../util/log.js');
 module.exports = (client, message, params) => {
   let pingEmbed = {
     color: 0x18bc9c,
@@ -19,5 +20,5 @@ module.exports = (client, message, params) => {
       };
       msg.edit({ embed: newPingEmbed })
     })
-    .catch(e => console.log(e))
+    .catch(err => log.error(err))
 }

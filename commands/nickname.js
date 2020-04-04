@@ -1,3 +1,4 @@
+const log = require('../util/log.js');
 module.exports = (client, message, params) => {
   params = params.toString();
   let nicknameEmbed = {
@@ -23,5 +24,5 @@ module.exports = (client, message, params) => {
       .catch(console.error)
   };
 
-  message.channel.send({ embed: nicknameEmbed }).catch(e => console.log(e));
+  message.channel.send({ embed: nicknameEmbed }).catch(err => log.error(err));
 }
