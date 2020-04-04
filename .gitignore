@@ -105,3 +105,4 @@ dist
 
 # Discord Bot config file
 config.json
+config.js
