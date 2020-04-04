@@ -14,16 +14,3 @@ client.on('ready', () => {
 client.on('error', error => {console.error(`[ERROR] ${error}`)});
 
 client.on('message', message => {require('./messageHandler')(message)})
-
-// client.on('message', message => {
-//   const commandList = Object.keys(commands);
-//   const normalizedMessage = message.content.toLowerCase();
-
-//   if (message.author.bot) return;
-//   if (!normalizedMessage.startsWith(prefix)) return;
-//   commandList.forEach(function(item) {
-//     if (normalizedMessage.startsWith(prefix + item)) {
-//       commands[item](message, commandList, client);
-//     }
-//   })
-// });
