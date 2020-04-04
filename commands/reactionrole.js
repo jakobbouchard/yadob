@@ -112,10 +112,16 @@ module.exports = (client, message, params) => {
           if ((name === reaction.emoji.name) || (name === reaction.emoji.toString())) {
             if (event.t === "MESSAGE_REACTION_ADD") {
               member.roles.add(guildRole.id)
-                .catch(error => {console.error(error)});
+                .then(() => {
+                  console.error(`[LOG] Added role ${guildRole.name} to user ${member.user} in guild ${member.guild}`)
+                })
+                .catch(error => {console.error(`[ERROR] ${error}`)});
             } else if (event.t === "MESSAGE_REACTION_REMOVE") {
               member.roles.remove(guildRole.id)
-                .catch(error => {console.error(error)});
+                .then(() => {
+                  console.error(`[LOG] Removed role ${guildRole.name} to user ${member.user} in guild ${member.guild}`)
+                })
+                .catch(error => {console.error(`[ERROR] ${error}`)});
             }
           }
         }
