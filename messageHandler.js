@@ -20,6 +20,6 @@ module.exports = message => {
     cmd(client, message, params);
     // cmd.run(client, message, params);
     // console.log("Command: /" + cmd.help.name)
-    console.log("Guild: " + message.guild.name)
+    // console.log("Guild: " + message.guild.name)
   }
 };
