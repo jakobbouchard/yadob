@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 const client = new Discord.Client({ disableEveryone: true });
 const { prefix, token } = require('./config.js');
-require('./commands')(client)
+require('./commands/_loader.js')(client)
 
 client.login(token)
   .then(() => console.log(`[LOG] Logged in successfully as ${client.user.tag}!`))
