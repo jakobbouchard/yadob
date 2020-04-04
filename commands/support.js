@@ -1,3 +1,4 @@
+const log = require('../util/log.js');
 module.exports = (client, message, params) => {
   const supportEmbed = {
     color: 0x18bc9c,
@@ -10,5 +11,5 @@ module.exports = (client, message, params) => {
     description: `Need help? You can either [access the documentation](https://yadob.jakobbouchard.dev) or [create an issue on GitHub](https://github.com/jakobbouchard/yadob/issues/new/choose).`
   }
 
-  message.channel.send({ embed: supportEmbed }).catch(e => console.log(e));
+  message.channel.send({ embed: supportEmbed }).catch(err => log.error(err));
 }

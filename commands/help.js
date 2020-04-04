@@ -1,3 +1,4 @@
+const log = require('../util/log.js');
 module.exports = (client, message, params) => {
   const {prefix} = require('../config.js');
   const helpEmbed = {
@@ -26,5 +27,5 @@ module.exports = (client, message, params) => {
     })
     return result;
   }
-  message.channel.send({ embed: helpEmbed }).catch(e => console.log(e));
+  message.channel.send({ embed: helpEmbed }).catch(err => log.error(err));
 }

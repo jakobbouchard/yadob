@@ -1,4 +1,5 @@
 // Currently based on https://github.com/Sam-DevZ/Discord-RoleReact
+const log = require('../util/log.js');
 
 module.exports = (client, message, params) => {
   const { MessageEmbed, Emoji, MessageReaction } = require('discord.js');
@@ -113,15 +114,15 @@ module.exports = (client, message, params) => {
             if (event.t === "MESSAGE_REACTION_ADD") {
               member.roles.add(guildRole.id)
                 .then(() => {
-                  console.error(`[LOG] Added role ${guildRole.name} to user ${member.user.tag} in guild ${member.guild}`)
+                  log.info(`Added role ${guildRole.name} to user ${member.user.tag} in guild ${member.guild}`)
                 })
-                .catch(error => {console.error(`[ERROR] ${error}`)});
+                .catch(err => {log.error(err)});
             } else if (event.t === "MESSAGE_REACTION_REMOVE") {
               member.roles.remove(guildRole.id)
                 .then(() => {
-                  console.error(`[LOG] Removed role ${guildRole.name} to user ${member.user.tag} in guild ${member.guild}`)
+                  log.info(`Removed role ${guildRole.name} to user ${member.user.tag} in guild ${member.guild}`)
                 })
-                .catch(error => {console.error(`[ERROR] ${error}`)});
+                .catch(err => {log.error(err)});
             }
           }
         }
