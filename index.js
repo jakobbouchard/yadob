@@ -13,4 +13,4 @@ client.on('ready', () => {
 
 client.on('error', error => {console.error(`[ERROR] ${error}`)});
 
-client.on('message', message => {require('./messageHandler')(message)})
+client.on('message', message => {require('./messageHandler.js')(message)})
