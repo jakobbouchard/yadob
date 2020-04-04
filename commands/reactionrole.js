@@ -109,7 +109,6 @@ module.exports = (client, message, params) => {
       for (const { name, value } of fields) {
         if (member.id !== client.user.id) {
           const guildRole = message.guild.roles.cache.find(role => role.name === value);
-          console.log(guildRole)
           if ((name === reaction.emoji.name) || (name === reaction.emoji.toString())) {
             if (event.t === "MESSAGE_REACTION_ADD") {
               member.roles.add(guildRole.id)
