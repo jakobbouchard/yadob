@@ -1,4 +1,5 @@
 module.exports = (client, message, params) => {
+  params = params.toString();
   let nicknameEmbed = {
     color: 0x18bc9c,
     title: 'Nickname',
