@@ -106,3 +106,6 @@ dist
 # Discord Bot config file
 config.json
 config.js
+
+# Release zips and script
+release/

@@ -15,7 +15,7 @@
       token: "Your-Bot-Token"
     }
     ```
-2. Install the dependencies by opening a terminal with admin/sudo rights and running `npm install`
+2. Install the dependencies by opening a terminal with admin/sudo rights and running `npm install --production`
 3. Start the bot in one of two ways:
    1. **(Windows only)** Double-click the bundled executable batch file.
    2. Run `npm start` in a terminal.

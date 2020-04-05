@@ -1,5 +1,8 @@
 theme: jekyll-theme-cayman
 title: YADOB
 description: Yet Another Discord Open Bot
-show_downloads: false
+show_downloads: true
+github:
+  zip_url: >-
+    https://github.com/jakobbouchard/yadob/releases/latest/download/yadob-v0.3.0-beta.zip
 google_analytics: UA-156012637-5
