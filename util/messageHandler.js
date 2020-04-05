@@ -20,6 +20,10 @@ module.exports = (client, message) => {
     || message.channel.type !== `dm`
   ) {
     cmd.run(client, message, args);
-    log.info(`[${message.guild.name}]${message.member.user.tag} Command: ${cmd.help.name}`);
+    if (message.guild) {
+      log.info(`[${message.guild.name}]${message.author.tag} Command: ${cmd.help.name}`);
+    } else {
+      log.info(`[DM]${message.author.tag} Command: ${cmd.help.name}`);
+    }
   }
 }
