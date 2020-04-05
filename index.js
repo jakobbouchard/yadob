@@ -1,6 +1,7 @@
 const Discord = require(`discord.js`);
 const client = new Discord.Client({ disableEveryone: true });
 const { prefix, token } = require(`./config.js`);
+const messageHandler = require(`./messageHandler.js`);
 const log = require(`./util/log.js`);
 require(`./commands/_loader.js`)(client);
 
@@ -14,4 +15,4 @@ client.on(`ready`, () => {
 
 client.on(`error`, err => log.error(err));
 
-client.on(`message`, message => require(`./messageHandler.js`)(client, message));
+client.on(`message`, message => messageHandler(client, message));
