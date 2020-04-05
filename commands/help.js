@@ -1,31 +1,53 @@
+const { MessageEmbed } = require(`discord.js`);
+const { prefix } = require('../config.js');
 const log = require('../util/log.js');
-module.exports = (client, message, args) => {
-  const {prefix} = require('../config.js');
-  const helpEmbed = {
-    color: 0x18bc9c,
-    title: 'Help',
-    author: {
-      name: 'YADOB',
-      icon_url: 'https://i.imgur.com/wSTFkRM.png',
-      url: 'https://yadob.jakobbouchard.dev',
-    },
-    description: `Here are all the commands you can use.
-                  You can also [access the documentation](https://yadob.jakobbouchard.dev)
-                  \u200b`,
-    fields: [
-      {
-        name: 'Commands',
-        value: listCommands(),
-      },
-    ]
-  }
-  function listCommands() {
+
+exports.run = async (client, message, args) => {
+  const embed = new MessageEmbed()
+    .setColor(`#18bc9c`)
+    .setTitle(`Help`)
+    .setAuthor(`YADOB`, `https://i.imgur.com/wSTFkRM.png`, `https://yadob.jakobbouchard.dev`)
+    .setDescription(`Here are all the commands you can use.
+                     You can also [access the documentation](https://yadob.jakobbouchard.dev).
+                     \u200b`)
+
+  function listAllCommands() {
     let result = '';
-    commandList = Array.from(client.commands.keys())
-    commandList.forEach(command => {
-      result += `**${prefix+command}**\n`;
+    client.commands.each(command => {
+      result += `**${prefix+command.info.name}** - ${command.info.description}\n`;
     })
     return result;
   }
-  message.channel.send({ embed: helpEmbed }).catch(err => log.error(err));
+
+  if (args.length > 0) {
+    if (args.length > 1) {
+      embed.setDescription(`Please only specify one command at a time!`)
+    } else {
+      const command = args.toString();
+      if (client.commands.has(command)) {
+        cmd = client.commands.get(command);
+        embed
+          .setTitle(`Help - ${cmd.info.name}`)
+          .setDescription(`**Usage:** \`${cmd.info.usage}\`
+                           ${cmd.info.description}`)
+      } else {
+        embed.setDescription(`This command doesn't exist or has been disabled!`)
+      }
+    }
+  } else {
+    embed.addField(`Commands`, listAllCommands())
+  }
+
+  message.channel.send(embed).catch(err => log.error(err));
 }
+
+exports.settings = {
+  enabled: true,
+  dmUse: true
+};
+
+exports.info = {
+  name: `help`,
+  description: `You're already here... (Can also give info about other commands)`,
+  usage: `halp [command]`
+};
