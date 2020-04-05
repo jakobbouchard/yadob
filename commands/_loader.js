@@ -19,8 +19,12 @@ module.exports = client => {
     commandFiles.forEach(async file => {
       try {
         const command = await require(`${__dirname}\\${file}`)
-        await client.commands.set(command.help.name, command)
-        log.success(`Command loaded - ${command.help.name}`)
+        if (command.settings.enabled) {
+          await client.commands.set(command.help.name, command)
+          log.success(`Command loaded - ${command.help.name}`)
+        } else {
+          log.warn(`Command is disabled - ${command.help.name}`)
+        }
       } catch (err) {
         log.error(`Couldn't load ${file}: ${err}`)
       }
