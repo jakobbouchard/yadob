@@ -17,14 +17,12 @@ module.exports = client => {
     }
 
     commandFiles.forEach(async file => {
-      if (file != `_loader.js`) {
-        try {
-          const command = require(`${__dirname}\\${file}`)
-          await client.commands.set(command.help.name, command)
-          log.success(`Command loaded - ${command.help.name}`)
-        } catch (err) {
-          log.error(`Couldn't load ${file}`)
-        }
+      try {
+        const command = require(`${__dirname}\\${file}`)
+        await client.commands.set(command.help.name, command)
+        log.success(`Command loaded - ${command.help.name}`)
+      } catch (err) {
+        log.error(`Couldn't load ${file}`)
       }
     })
   })
