@@ -14,7 +14,7 @@ exports.settings = {
   dmUse: true
 };
 
-exports.help = {
+exports.info = {
   name: 'about',
   description: 'About the bot.',
   usage: 'about'

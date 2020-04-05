@@ -21,9 +21,9 @@ module.exports = (client, message) => {
   ) {
     cmd.run(client, message, args);
     if (message.guild) {
-      log.info(`[${message.guild.name}]${message.author.tag} Command: ${cmd.help.name}`);
+      log.info(`[${message.guild.name}]${message.author.tag} Command: ${cmd.info.name}`);
     } else {
-      log.info(`[DM]${message.author.tag} Command: ${cmd.help.name}`);
+      log.info(`[DM]${message.author.tag} Command: ${cmd.info.name}`);
     }
   }
 }
