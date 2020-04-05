@@ -1,9 +1,9 @@
 // Currently based on https://github.com/Sam-DevZ/Discord-RoleReact
+const { MessageEmbed, Emoji, MessageReaction } = require('discord.js');
 const log = require('../util/log.js');
+const CONFIG = require(`./reactionrole.json`);
 
-module.exports = (client, message, args) => {
-  const { MessageEmbed, Emoji, MessageReaction } = require('discord.js');
-  const CONFIG = require(`./reactionrole.json`);
+exports.run = async (client, message, args) => {
 
   if (CONFIG.roles.length !== CONFIG.reactions.length)
     throw "Roles list and reactions list are not the same length! Please double check this in the config.js file";
@@ -130,3 +130,14 @@ module.exports = (client, message, args) => {
     }
   });
 }
+
+exports.settings = {
+  enabled: true,
+  dmUse: false
+};
+
+exports.info = {
+  name: `reactionrole`,
+  description: `Creates a message with an embed using the specified settings in reactionrole.json.`,
+  usage: `reactionrole`
+};

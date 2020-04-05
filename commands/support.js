@@ -1,15 +1,23 @@
-const log = require('../util/log.js');
-module.exports = (client, message, args) => {
-  const supportEmbed = {
-    color: 0x18bc9c,
-    title: 'Support',
-    author: {
-      name: 'YADOB',
-      icon_url: 'https://i.imgur.com/wSTFkRM.png',
-      url: 'https://yadob.jakobbouchard.dev',
-    },
-    description: `Need help? You can either [access the documentation](https://yadob.jakobbouchard.dev) or [create an issue on GitHub](https://github.com/jakobbouchard/yadob/issues/new/choose).`
-  }
+const { MessageEmbed } = require(`discord.js`);
+const log = require(`../util/log.js`);
 
-  message.channel.send({ embed: supportEmbed }).catch(err => log.error(err));
+exports.run = async (client, message, args) => {
+  const embed = new MessageEmbed()
+    .setColor(`#18bc9c`)
+    .setTitle(`Support`)
+    .setDescription(`Need help? You can either [access the documentation](https://yadob.jakobbouchard.dev) or [create an issue on GitHub](https://github.com/jakobbouchard/yadob/issues/new/choose).`)
+    .setAuthor(`YADOB`, `https://i.imgur.com/wSTFkRM.png`, `https://yadob.jakobbouchard.dev`)
+
+  message.channel.send(embed).catch(err => log.error(err));
 }
+
+exports.settings = {
+  enabled: true,
+  dmUse: true
+};
+
+exports.info = {
+  name: `support`,
+  description: `Links the documentation as well as the issue form on GitHub.`,
+  usage: `support`
+};
