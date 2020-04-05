@@ -1,5 +1,5 @@
 const log = require('../util/log.js');
-module.exports = (client, message, params) => {
+module.exports = (client, message, args) => {
   const supportEmbed = {
     color: 0x18bc9c,
     title: 'Support',
