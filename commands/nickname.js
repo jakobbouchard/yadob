@@ -1,6 +1,6 @@
 const log = require('../util/log.js');
-module.exports = (client, message, params) => {
-  params = params.toString();
+module.exports = (client, message, args) => {
+  nickname = args.toString();
   let nicknameEmbed = {
     color: 0x18bc9c,
     title: 'Nickname',
@@ -10,11 +10,11 @@ module.exports = (client, message, params) => {
       url: 'https://yadob.jakobbouchard.dev',
     }
   };
-  if (!params.length) {
+  if (!nickname.length) {
     nicknameEmbed.description = `Please enter a nickname.`;
-  } else if (params.length > 32) {
+  } else if (nickname.length > 32) {
     nicknameEmbed.description = `A nickname must be between 1 and 32 characters.`;
-  } else if (params == 'clear') {
+  } else if (nickname == 'clear') {
     message.guild.me.setNickname('')
       .then(() => {
         nicknameEmbed.description = `Nickname cleared!`;
@@ -22,10 +22,10 @@ module.exports = (client, message, params) => {
       })
       .catch(err => log.error(err))
   } else {
-    message.guild.me.setNickname(params)
+    message.guild.me.setNickname(nickname)
       .then(() => {
-        nicknameEmbed.description = `Nickname changed to ${params}!`;
-        log.info(`Nickname changed to ${params} in guild ${message.guild}!`)
+        nicknameEmbed.description = `Nickname changed to ${nickname}!`;
+        log.info(`Nickname changed to ${nickname} in guild ${message.guild}!`)
       })
       .catch(err => log.error(err))
   };
