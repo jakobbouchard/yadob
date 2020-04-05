@@ -19,10 +19,10 @@ module.exports = client => {
       try {
         const command = await require(`${__dirname}\\${file}`);
         if (command.settings.enabled) {
-          await client.commands.set(command.help.name, command);
-          log.success(`Command loaded - ${command.help.name}`);
+          await client.commands.set(command.info.name, command);
+          log.success(`Command loaded - ${command.info.name}`);
         } else {
-          log.warn(`Command is disabled - ${command.help.name}`);
+          log.warn(`Command is disabled - ${command.info.name}`);
         }
         if (command.preload) {
           command.preload(client);
