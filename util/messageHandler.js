@@ -1,5 +1,5 @@
-const { prefix } = require(`./config.js`);
-const log = require(`./util/log.js`);
+const { prefix } = require(`../config.js`);
+const log = require(`./log.js`);
 
 module.exports = (client, message) => {
   const normalizedMessage = message.content.toLowerCase();
