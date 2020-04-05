@@ -11,9 +11,7 @@ exports.run = (client, message, args) => {
 
 exports.settings = {
   enabled: true,
-  preload: false,
-  useInDM: true,
-  aliases: []
+  dmUse: true
 };
 
 exports.help = {
