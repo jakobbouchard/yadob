@@ -15,14 +15,14 @@ const colours = {
 }
 
 exports.info = message => {
-  console.log(`${getTimestamp()}${colours.info}[LOG]${colours.reset} %s`, message);
+  console.log(`${getTimestamp()}${colours.info}[LOG]${colours.reset} ${message}`);
 }
 exports.success = message => {
-  console.log(`${getTimestamp()}${colours.success}[OK]${colours.reset} %s`, message);
+  console.log(`${getTimestamp()}${colours.success}[OK]${colours.reset} ${message}`);
 }
 exports.warn = message => {
-  console.log(`${getTimestamp()}${colours.warn}[WARN]${colours.reset} %s`, message);
+  console.log(`${getTimestamp()}${colours.warn}[WARN]${colours.reset} ${message}`);
 }
 exports.error = message => {
-  console.log(`${getTimestamp()}${colours.error}[ERROR]${colours.reset} %s`, message);
+  console.log(`${getTimestamp()}${colours.error}[ERROR]${colours.reset} ${message}`);
 }
