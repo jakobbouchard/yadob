@@ -1,6 +1,6 @@
-const Discord = require('discord.js');
-const fileSystem = require('fs');
-const log = require('../util/log.js');
+const Discord = require(`discord.js`);
+const fileSystem = require(`fs`);
+const log = require(`../util/log.js`);
 
 module.exports = client => {
   client.commands = new Discord.Collection();
@@ -10,17 +10,21 @@ module.exports = client => {
     if (err) {
       return log.error(`Unable to scan directory: ${err}`);
     }
-  
-    let commandFiles = files.filter(file => file.split('.').pop() === 'js')
+
+    const commandFiles = files.filter(file => (file.split(`.`).pop() === `js` && file != `_loader.js`))
     if(commandFiles.length <= 0) {
-      return log.warn('No commands were found.')
+      return log.error(`No commands were found.`)
     }
 
-    commandFiles.forEach((file) => {
-      if (file != '_loader.js') {
-        let command = require(`${__dirname}\\${file}`);
-        client.commands.set(file.replace('.js', ''), command);
-        log.info(`Command loaded - ${file}`);
+    commandFiles.forEach(async file => {
+      if (file != `_loader.js`) {
+        try {
+          const command = require(`${__dirname}\\${file}`)
+          await client.commands.set(command.help.name, command)
+          log.success(`Command loaded - ${command.help.name}`)
+        } catch (err) {
+          log.error(`Couldn't load ${file}`)
+        }
       }
     })
   })
