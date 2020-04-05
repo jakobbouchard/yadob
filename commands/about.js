@@ -1,6 +1,6 @@
 const { MessageEmbed } = require('discord.js');
 
-exports.run = (client, message, args) => {
+exports.run = async (client, message, args) => {
   const embed = new MessageEmbed()
     .setColor(0xFFFF00)
     .addField('About The Bot', `YADOB is a bot created and maintained by Jakob Bouchard. It is written with Discord.js.`)
