@@ -9,10 +9,10 @@
 
 # Setup
 1. Copy the config.example.json file and rename it to config.json, then edit it how you want :
-    ```jsonc
+    ```js
     {
-      "prefix": "!", // You can change the prefix to whatever you want it doesn't have to be - !
-      "token": "Your-Bot-Token"
+      prefix: "!", // You can change the prefix to whatever you want it doesn't have to be - !
+      token: "Your-Bot-Token"
     }
     ```
 2. Install the dependencies by opening a terminal with admin/sudo rights and running `npm install`
