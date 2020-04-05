@@ -1,18 +1,10 @@
 const getTimestamp = () => {
-  const date = new Date()
-  const hour = date.getHours();
-  const minutes = date.getMinutes();
-  const seconds = date.getSeconds();
-  const milliseconds = date.getMilliseconds();
-  return '[' +
-         ((hour < 10) ? '0' + hour: hour) +
-         ':' +
-         ((minutes < 10) ? '0' + minutes: minutes) +
-         ':' +
-         ((seconds < 10) ? '0' + seconds: seconds) +
-         '.' +
-         ('00' + milliseconds).slice(-3) +
-         '] ';
+  const date = new Date();
+  const hours = (`0` + date.getHours()).slice(-2);
+  const minutes = (`0` + date.getMinutes()).slice(-2);
+  const seconds = (`0` + date.getSeconds()).slice(-2);
+  const milliseconds = (`00` + date.getMilliseconds()).slice(-3);
+  return `[${hours}:${minutes}:${seconds}.${milliseconds}] `;
 }
 const colours = {
   reset: "\x1b[0m",
@@ -23,14 +15,14 @@ const colours = {
 }
 
 exports.info = message => {
-  console.log(`${getTimestamp()}${colours.info}[LOG]${colours.reset} %s`, message)
+  console.log(`${getTimestamp()}${colours.info}[LOG]${colours.reset} %s`, message);
 }
 exports.success = message => {
-  console.log(`${getTimestamp()}${colours.success}[OK]${colours.reset} %s`, message)
+  console.log(`${getTimestamp()}${colours.success}[OK]${colours.reset} %s`, message);
 }
 exports.warn = message => {
-  console.log(`${getTimestamp()}${colours.warn}[WARN]${colours.reset} %s`, message)
+  console.log(`${getTimestamp()}${colours.warn}[WARN]${colours.reset} %s`, message);
 }
 exports.error = message => {
-  console.log(`${getTimestamp()}${colours.error}[ERROR]${colours.reset} %s`, message)
+  console.log(`${getTimestamp()}${colours.error}[ERROR]${colours.reset} %s`, message);
 }
