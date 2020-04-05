@@ -2,7 +2,7 @@ const { Collection } = require(`discord.js`);
 const fileSystem = require(`fs`);
 const log = require(`../util/log.js`);
 
-module.exports = client => {
+module.exports = async client => {
   client.commands = new Collection();
 
   fileSystem.readdir(__dirname, (err, files) => {

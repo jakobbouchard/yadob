@@ -14,15 +14,15 @@ const colours = {
   error: "\x1b[91m",
 }
 
-exports.info = message => {
+exports.info = async message => {
   console.log(`${getTimestamp()}${colours.info}[LOG]${colours.reset} ${message}`);
 }
-exports.success = message => {
+exports.success = async message => {
   console.log(`${getTimestamp()}${colours.success}[OK]${colours.reset} ${message}`);
 }
-exports.warn = message => {
+exports.warn = async message => {
   console.log(`${getTimestamp()}${colours.warn}[WARN]${colours.reset} ${message}`);
 }
-exports.error = message => {
+exports.error = async message => {
   console.log(`${getTimestamp()}${colours.error}[ERROR]${colours.reset} ${message}`);
 }
