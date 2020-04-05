@@ -23,7 +23,7 @@ module.exports = (client, message) => {
     if (message.guild) {
       log.info(`[${message.guild.name}]${message.author.tag} Command: ${cmd.info.name}`);
     } else {
-      log.info(`[DM]${message.author.tag} Command: ${cmd.info.name}`);
+      log.info(`[DM]${message.author.tag} Command: ${command} ${args}`);
     }
   } else if (message.channel.type === `dm`&& !cmd.settings.dmUse) {
     message.channel.send(`You cannot use this command in a DM!`)
