@@ -25,5 +25,7 @@ module.exports = (client, message) => {
     } else {
       log.info(`[DM]${message.author.tag} Command: ${cmd.info.name}`);
     }
+  } else if (message.channel.type === `dm`&& !cmd.settings.dmUse) {
+    message.channel.send(`You cannot use this command in a DM!`)
   }
 }
