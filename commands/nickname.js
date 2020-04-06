@@ -13,19 +13,21 @@ exports.run = async (client, message, args) => {
   } else if (nickname.length > 32) {
     embed.setDescription(`A nickname must be between 1 and 32 characters.`);
   } else if (nickname === `clear`) {
-    message.guild.me.setNickname(``)
-      .then(() => {
-        embed.setDescription(`Nickname cleared!`);
-        log.info(`Nickname cleared in guild ${message.guild}!`);
-      })
-      .catch(err => log.error(err));
+    try {
+      await message.guild.me.setNickname(``);
+      embed.setDescription(`Nickname cleared!`);
+      log.info(`Nickname cleared in guild ${message.guild}`);
+    } catch (err) {
+      log.error(err);
+    }
   } else {
-    message.guild.me.setNickname(nickname)
-      .then(() => {
-        embed.setDescription(`Nickname changed to ${nickname}!`);
-        log.info(`Nickname changed to ${nickname} in guild ${message.guild}!`);
-      })
-      .catch(err => log.error(err));
+    try {
+      await message.guild.me.setNickname(nickname);
+      embed.setDescription(`Nickname changed to '${nickname}'!`);
+      log.info(`Nickname changed to '${nickname}' in guild ${message.guild}`);
+    } catch (err) {
+      log.error(err);
+    }
   }
 
   message.channel.send(embed).catch(err => log.error(err));
