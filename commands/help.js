@@ -15,7 +15,7 @@ exports.run = async (client, message, args) => {
     let result = ``;
     client.commands.each(command => {
       result += `**${prefix+command.info.name}** - ${command.info.description}\n`;
-    })
+    });
     return result;
   };
 
