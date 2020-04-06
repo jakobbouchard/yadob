@@ -2,7 +2,7 @@
 
 ## Issues
 
-To report any bugs or request features, please [submit an issue](https://github.com/jakobbouchard/yadob/issues/new).
+To report any bugs or request features, please [submit an issue](https://github.com/jakobbouchard/yadob/issues/new/choose).
 
 ## Coding conventions
 
