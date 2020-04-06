@@ -1,12 +1,11 @@
 // Currently based on https://github.com/Sam-DevZ/Discord-RoleReact
-const { MessageEmbed, Emoji, MessageReaction } = require('discord.js');
-const log = require('../util/log.js');
+const { MessageEmbed, Emoji, MessageReaction } = require(`discord.js`);
+const log = require(`../util/log.js`);
 const CONFIG = require(`./reactionrole.json`);
 
 exports.run = async (client, message, args) => {
-
   if (CONFIG.roles.length !== CONFIG.reactions.length)
-    throw "Roles list and reactions list are not the same length! Please double check this in the config.js file";
+    throw `Roles list and reactions list are not the same length! Please double check this in the config.js file`;
 
   function generateEmbedFields() {
     return CONFIG.roles.map((r, e) => {
@@ -19,25 +18,25 @@ exports.run = async (client, message, args) => {
 
   if (!message.guild) return;
 
-  if (message.guild && !message.channel.permissionsFor(message.guild.me).missing('SEND_MESSAGES')) return;
+  if (message.guild && !message.channel.permissionsFor(message.guild.me).missing(`SEND_MESSAGES`)) return;
 
   if (CONFIG.deleteSetupCMD) {
-    const missing = message.channel.permissionsFor(message.guild.me).missing('MANAGE_MESSAGES');
+    const missing = message.channel.permissionsFor(message.guild.me).missing(`MANAGE_MESSAGES`);
     // Here we check if the bot can actually delete messages in the channel the command is being ran in
-    if (missing.includes('MANAGE_MESSAGES'))
-      throw new Error("I need permission to delete your command message! Please assign the 'Manage Messages' permission to me in this channel!");
+    if (missing.includes(`MANAGE_MESSAGES`))
+      throw new Error(`I need permission to delete your command message! Please assign the 'Manage Messages' permission to me in this channel!`);
     message.delete().catch(O_o=>{});
   }
 
-  const missing = message.channel.permissionsFor(message.guild.me).missing('MANAGE_MESSAGES');
+  const missing = message.channel.permissionsFor(message.guild.me).missing(`MANAGE_MESSAGES`);
   // Here we check if the bot can actually add recations in the channel the command is being ran in
-  if (missing.includes('ADD_REACTIONS'))
-    throw new Error("I need permission to add reactions to these messages! Please assign the 'Add Reactions' permission to me in this channel!");
+  if (missing.includes(`ADD_REACTIONS`))
+    throw new Error(`I need permission to add reactions to these messages! Please assign the 'Add Reactions' permission to me in this channel!`);
 
-  if (!CONFIG.embedMessage || (CONFIG.embedMessage === ''))
-    throw "The 'embedMessage' property is not set in the config.js file. Please do this!";
-  if (!CONFIG.embedFooter || (CONFIG.embedMessage === ''))
-    throw "The 'embedFooter' property is not set in the config.js file. Please do this!";
+  if (!CONFIG.embedMessage || (CONFIG.embedMessage === ``))
+    throw `The 'embedMessage' property is not set in the config.js file. Please do this!`;
+  if (!CONFIG.embedFooter || (CONFIG.embedMessage === ``))
+    throw `The 'embedFooter' property is not set in the config.js file. Please do this!`;
 
   const roleEmbed = new MessageEmbed()
     .setDescription(CONFIG.embedMessage)
@@ -45,20 +44,20 @@ exports.run = async (client, message, args) => {
 
   if (CONFIG.embedColor) roleEmbed.setColor(CONFIG.embedColor);
 
-  if (CONFIG.embedThumbnail && (CONFIG.embedThumbnailLink !== '')) 
+  if (CONFIG.embedThumbnail && (CONFIG.embedThumbnailLink !== ``))
     roleEmbed.setThumbnail(CONFIG.embedThumbnailLink);
   else if (CONFIG.embedThumbnail && message.guild.icon)
     roleEmbed.setThumbnail(message.guild.iconURL);
 
   const fields = generateEmbedFields();
-  if (fields.length > 25) throw "That maximum roles that can be set for an embed is 25!";
+  if (fields.length > 25) throw `That maximum roles that can be set for an embed is 25!`;
 
   for (const { emoji, role } of fields) {
     if (!message.guild.roles.fetch(role => role.name === role))
       throw `The role '${role}' does not exist!`;
 
     const customEmote = client.emojis.cache.find(e => e.name === emoji);
-    
+
     if (!customEmote) roleEmbed.addField(emoji, role, true);
     else roleEmbed.addField(customEmote, role, true);
   }
@@ -67,7 +66,7 @@ exports.run = async (client, message, args) => {
     for (const r of CONFIG.reactions) {
       const emoji = r;
       const customCheck = client.emojis.cache.find(e => e.name === emoji);
-      
+
       if (!customCheck) await m.react(emoji);
       else await m.react(customCheck.id);
     }
@@ -75,12 +74,12 @@ exports.run = async (client, message, args) => {
 
   // This makes the events used a bit more readable
   const events = {
-    MESSAGE_REACTION_ADD: 'messageReactionAdd',
-    MESSAGE_REACTION_REMOVE: 'messageReactionRemove',
+    MESSAGE_REACTION_ADD: `messageReactionAdd`,
+    MESSAGE_REACTION_REMOVE: `messageReactionRemove`,
   };
 
   // This event handles adding/removing users from the role(s) they chose based on message reactions
-  client.on('raw', async event => {
+  client.on(`raw`, async event => {
     if (!events.hasOwnProperty(event.t)) return;
 
     const { d: data } = event;
@@ -102,7 +101,7 @@ exports.run = async (client, message, args) => {
     if (message.embeds[0]) embedFooterText = message.embeds[0].footer.text;
 
     if (
-      (message.author.id === client.user.id) && (message.content !== CONFIG.initialMessage || 
+      (message.author.id === client.user.id) && (message.content !== CONFIG.initialMessage ||
       (message.embeds[0] && (embedFooterText !== CONFIG.embedFooter)))
     ) {
       const fields = message.embeds[0].fields;
@@ -111,13 +110,13 @@ exports.run = async (client, message, args) => {
         if (member.id !== client.user.id) {
           const guildRole = message.guild.roles.cache.find(role => role.name === value);
           if ((name === reaction.emoji.name) || (name === reaction.emoji.toString())) {
-            if (event.t === "MESSAGE_REACTION_ADD") {
+            if (event.t === `MESSAGE_REACTION_ADD`) {
               member.roles.add(guildRole.id)
                 .then(() => {
                   log.info(`Added role ${guildRole.name} to user ${member.user.tag} in guild ${member.guild}`)
                 })
                 .catch(err => {log.error(err)});
-            } else if (event.t === "MESSAGE_REACTION_REMOVE") {
+            } else if (event.t === `MESSAGE_REACTION_REMOVE`) {
               member.roles.remove(guildRole.id)
                 .then(() => {
                   log.info(`Removed role ${guildRole.name} to user ${member.user.tag} in guild ${member.guild}`)
@@ -129,7 +128,7 @@ exports.run = async (client, message, args) => {
       }
     }
   });
-}
+};
 
 exports.settings = {
   enabled: true,

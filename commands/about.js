@@ -1,4 +1,4 @@
-const { MessageEmbed } = require('discord.js');
+const { MessageEmbed } = require(`discord.js`);
 
 exports.run = async (client, message, args) => {
   const embed = new MessageEmbed()
@@ -17,7 +17,7 @@ exports.settings = {
 };
 
 exports.info = {
-  name: 'about',
-  description: 'About the bot.',
-  usage: 'about'
+  name: `about`,
+  description: `About the bot.`,
+  usage: `about`
 };

@@ -6,16 +6,14 @@ exports.run = async (client, message, args) => {
     .setColor(`#18bc9c`)
     .setTitle(`Support`)
     .setDescription(`Commands reloaded!`)
-    .setAuthor(`YADOB`, `https://i.imgur.com/wSTFkRM.png`, `https://yadob.jakobbouchard.dev`)
+    .setAuthor(`YADOB`, `https://i.imgur.com/wSTFkRM.png`, `https://yadob.jakobbouchard.dev`);
 
-  await log.info(client.commands.get('help').info.usage)
-  await client.commands.clear()
-  delete require.cache[require.resolve('./_loader.js')]
-  await require(`./_loader.js`)(client)
-  log.info(client.commands.get('help').info.usage)
+  await client.commands.clear();
+  delete require.cache[require.resolve(`./_loader.js`)];
+  await require(`./_loader.js`)(client);
 
   message.channel.send(embed).catch(err => log.error(err));
-}
+};
 
 exports.settings = {
   enabled: false,

@@ -1,16 +1,18 @@
 const { Collection } = require(`discord.js`);
-const fileSystem = require(`fs`);
+const fs = require(`fs`);
 const log = require(`../util/log.js`);
 
 module.exports = async client => {
   client.commands = new Collection();
 
-  fileSystem.readdir(__dirname, (err, files) => {
+  fs.readdir(__dirname, (err, files) => {
     if (err) {
       return log.error(`Unable to scan directory: ${err}`);
     }
 
-    const commandFiles = files.filter(file => (file.split(`.`).pop() === `js` && file != `_loader.js`));
+    const commandFiles = files.filter(file => (
+      file.split(`.`).pop() === `js` && file != `_loader.js`
+    ));
     if (commandFiles.length <= 0) {
       return log.error(`No commands were found.`);
     }
@@ -28,8 +30,8 @@ module.exports = async client => {
           command.preload(client);
         }
       } catch (err) {
-        log.error(`Couldn't load ${file}: ${err}`);
+        log.error(`Couldn’t load ${file}: ${err}`);
       }
     });
   });
-}
+};
