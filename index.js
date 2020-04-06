@@ -6,7 +6,7 @@ const log = require(`./util/log.js`);
 require(`./commands/_loader.js`)(client);
 
 client.login(token)
-  .then(() => log.success(`Logged in successfully as ${client.user.tag}!`))
+  .then(() => log.success(`Logged in successfully as ${client.user.tag}`))
   .catch(err => log.error(err));
 
 client.on(`ready`, () => {
