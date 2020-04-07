@@ -47,7 +47,7 @@ exports.settings = {
 
 exports.info = {
   name: `nickname`,
-  category: ``,
+  category: `Guild`,
   description: `Changes or clears the bot’s nickname.`,
   usage: `nickname <nickname | clear>`
 };
