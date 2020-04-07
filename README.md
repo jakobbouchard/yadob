@@ -4,9 +4,9 @@
 ![Made With JavaScript](https://forthebadge.com/images/badges/made-with-javascript.svg "Made With JavaScript")
 ![Contains Technical Debt](https://forthebadge.com/images/badges/contains-technical-debt.svg "Contains Technical Debt")
 
-![discord.js dependency version](https://img.shields.io/github/package-json/dependency-version/jakobbouchard/yadob/discord.js?style=for-the-badge "discord.js dependency version")
-![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/jakobbouchard/yadob?style=for-the-badge "GitHub code size in bytes")
-![package.json version](https://img.shields.io/github/package-json/v/jakobbouchard/yadob?style=for-the-badge "package.json version")
+[![discord.js dependency version](https://img.shields.io/github/package-json/dependency-version/jakobbouchard/yadob/discord.js?style=for-the-badge "discord.js Homepage")](https://discord.js.org/)
+[![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/jakobbouchard/yadob?style=for-the-badge "Download the repository")](https://github.com/jakobbouchard/yadob/archive/master.zip)
+[![package.json version](https://img.shields.io/github/package-json/v/jakobbouchard/yadob?style=for-the-badge "Go to latest release")](https://github.com/jakobbouchard/yadob/releases/latest)
 [![Gitpod Ready-to-code](https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=gitpod&style=for-the-badge "Gitpod Ready-to-code")](https://gitpod.io/#https://github.com/jakobbouchard/yadob)
 
 # Requirements
