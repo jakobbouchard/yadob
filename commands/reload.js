@@ -1,12 +1,19 @@
 const { MessageEmbed } = require(`discord.js`);
+const custom = require(`../custom.js`);
 const log = require(`../util/log.js`);
 
 exports.run = async (client, message, args) => {
   const embed = new MessageEmbed()
-    .setColor(`#18bc9c`)
+    .setColor(custom.embed.color)
     .setTitle(`Support`)
-    .setDescription(`Commands reloaded!`)
-    .setAuthor(`YADOB`, `https://i.imgur.com/wSTFkRM.png`, `https://yadob.jakobbouchard.dev`);
+    .setDescription(`Bot reloaded!`);
+
+  if (custom.embed.useAuthor) {
+    embed.setAuthor(custom.botInfo.name, custom.botInfo.logo, custom.botInfo.website);
+  }
+  if (custom.embed.useFooter) {
+    embed.setFooter(custom.embed.footer);
+  }
 
   await client.commands.each(command => {
     delete require.cache[require.resolve(`./${command.info.name}.js`)];

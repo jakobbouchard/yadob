@@ -1,15 +1,22 @@
 const { MessageEmbed } = require(`discord.js`);
 const { prefix } = require(`../config.js`);
+const custom = require(`../custom.js`);
 const log = require(`../util/log.js`);
 
 exports.run = async (client, message, args) => {
   const embed = new MessageEmbed()
-    .setColor(`#18bc9c`)
+    .setColor(custom.embed.color)
     .setTitle(`Help`)
-    .setAuthor(`YADOB`, `https://i.imgur.com/wSTFkRM.png`, `https://yadob.jakobbouchard.dev`)
     .setDescription(`Here are all the commands you can use.
                      You can also [access the documentation](https://yadob.jakobbouchard.dev).
                      \u200b`);
+
+  if (custom.embed.useAuthor) {
+    embed.setAuthor(custom.botInfo.name, custom.botInfo.logo, custom.botInfo.website);
+  }
+  if (custom.embed.useFooter) {
+    embed.setFooter(custom.embed.footer);
+  }
 
   function listAllCommands() {
     let result = ``;

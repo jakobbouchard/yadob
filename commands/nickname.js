@@ -1,12 +1,19 @@
 const { MessageEmbed } = require(`discord.js`);
+const custom = require(`../custom.js`);
 const log = require(`../util/log.js`);
 
 exports.run = async (client, message, args) => {
   const nickname = args.join(` `);
   const embed = new MessageEmbed()
-    .setColor(`#18bc9c`)
-    .setTitle(`Nickname`)
-    .setAuthor(`YADOB`, `https://i.imgur.com/wSTFkRM.png`, `https://yadob.jakobbouchard.dev`);
+    .setColor(custom.embed.color)
+    .setTitle(`Nickname`);
+
+  if (custom.embed.useAuthor) {
+    embed.setAuthor(custom.botInfo.name, custom.botInfo.logo, custom.botInfo.website);
+  }
+  if (custom.embed.useFooter) {
+    embed.setFooter(custom.embed.footer);
+  }
 
   if (!nickname.length) {
     embed.setDescription(`Please enter a nickname.`);
