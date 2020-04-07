@@ -1,8 +1,17 @@
-# A Discord bot made with Discord.js
-[![Built With Love](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com)
-[![Contains Technical Debt](https://forthebadge.com/images/badges/contains-technical-debt.svg)](https://forthebadge.com)
-[![Made With JavaScript](https://forthebadge.com/images/badges/made-with-javascript.svg)](https://forthebadge.com)
-[![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/jakobbouchard/yadob)
+[![YADOB](assets/images/logo-header.png "Yet Another Discord Open Bot")](https://yadob.jakobbouchard.dev)
+
+<div style="text-align: center;">
+  <img src="https://forthebadge.com/images/badges/built-with-love.svg" alt="Built With Love">
+  <img src="https://forthebadge.com/images/badges/made-with-javascript.svg" alt="Made With JavaScript">
+  <img src="https://forthebadge.com/images/badges/contains-technical-debt.svg" alt="Contains Technical Debt">
+  <br>
+  <img alt="GitHub package.json dependency version (prod)" src="https://img.shields.io/github/package-json/dependency-version/jakobbouchard/yadob/discord.js?style=for-the-badge">
+  <img alt="GitHub code size in bytes" src="https://img.shields.io/github/languages/code-size/jakobbouchard/yadob?style=for-the-badge">
+  <img alt="GitHub package.json version" src="https://img.shields.io/github/package-json/v/jakobbouchard/yadob?style=for-the-badge">
+  <a href="https://gitpod.io/#https://github.com/jakobbouchard/yadob" title="Gitpod Ready-to-code">
+    <img src="https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=gitpod&style=for-the-badge" alt="Gitpod Ready-to-code">
+  </a>
+</div>
 
 # Requirements
 
