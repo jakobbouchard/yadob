@@ -19,7 +19,7 @@ module.exports = async client => {
 
     commandFiles.forEach(async file => {
       try {
-        const command = await require(`${__dirname}\\${file}`);
+        const command = await require(`${__dirname}/${file}`);
         if (command.settings.enabled) {
           await client.commands.set(command.info.name, command);
           log.success(`Command loaded - ${command.info.name}`);
