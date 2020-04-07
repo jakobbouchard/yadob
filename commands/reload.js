@@ -5,7 +5,7 @@ const log = require(`../util/log.js`);
 exports.run = async (client, message, args) => {
   const embed = new MessageEmbed()
     .setColor(custom.embed.color)
-    .setTitle(`Support`)
+    .setTitle(`Reload`)
     .setDescription(`Commands and customization have been reloaded!`);
 
   if (custom.embed.useAuthor) {
