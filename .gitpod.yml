@@ -1,0 +1,4 @@
+tasks:
+  - init: npm install --production
+    command: npm run start
+image: gitpod/workspace-full
