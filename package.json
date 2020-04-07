@@ -1,6 +1,6 @@
 {
   "name": "yadob",
-  "version": "0.3.0",
+  "version": "0.4.0-beta",
   "description": "Yet Another Discord Open Bot",
   "main": "index.js",
   "dependencies": {
@@ -12,8 +12,7 @@
   },
   "scripts": {
     "start": "node index.js",
-    "zipBeta": "node ./release/zipProject.js -beta",
-    "zipRelease": "node ./release/zipProject.js -release"
+    "zipRelease": "node ./release/zipProject.js"
   },
   "repository": {
     "type": "git",
