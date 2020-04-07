@@ -5,6 +5,7 @@ const messageHandler = require(`./util/messageHandler.js`);
 const log = require(`./util/log.js`);
 require(`./commands/_loader.js`)(client);
 
+log.info(`Starting bot on ${new Date()}`);
 client.login(token)
   .then(() => log.success(`Logged in successfully as ${client.user.tag}`))
   .catch(err => log.error(err));
