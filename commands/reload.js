@@ -15,7 +15,6 @@ exports.run = async (client, message, args) => {
     embed.setFooter(custom.embed.footer);
   }
 
-  log.info(`Trying to reload...`);
   try {
     await client.commands.each(command => {
       delete require.cache[require.resolve(`./${command.info.name}.js`)];
@@ -23,7 +22,6 @@ exports.run = async (client, message, args) => {
     delete require.cache[require.resolve(`../custom.js`)];
     await client.commands.clear();
     await require(`./_loader.js`)(client);
-    log.success(`Reloaded commands and customizations`)
   } catch (err) {
     log.error(err);
   }
