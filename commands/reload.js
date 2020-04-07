@@ -6,7 +6,7 @@ exports.run = async (client, message, args) => {
   const embed = new MessageEmbed()
     .setColor(custom.embed.color)
     .setTitle(`Support`)
-    .setDescription(`Bot reloaded!`);
+    .setDescription(`Commands and customization have been reloaded!`);
 
   if (custom.embed.useAuthor) {
     embed.setAuthor(custom.botInfo.name, custom.botInfo.logo, custom.botInfo.website);
