@@ -11,6 +11,7 @@ exports.run = async (client, message, args) => {
   await client.commands.each(command => {
     delete require.cache[require.resolve(`./${command.info.name}.js`)];
   });
+  delete require.cache[require.resolve(`../custom.js`)];
   await client.commands.clear();
   await require(`./_loader.js`)(client);
 
