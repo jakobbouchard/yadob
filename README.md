@@ -1,4 +1,4 @@
-[![YADOB](assets/images/logo-header.png "Yet Another Discord Open Bot")](https://yadob.jakobbouchard.dev)
+[![YADOB](docs/assets/images/logo-header.png "Yet Another Discord Open Bot")](https://yadob.jakobbouchard.dev)
 
 <div style="text-align: center;">
   <img src="https://forthebadge.com/images/badges/built-with-love.svg" alt="Built With Love">
