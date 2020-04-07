@@ -1,17 +1,13 @@
 [![YADOB](docs/assets/images/logo-header.png "Yet Another Discord Open Bot")](https://yadob.jakobbouchard.dev)
 
-<div style="text-align: center;">
-  <img src="https://forthebadge.com/images/badges/built-with-love.svg" alt="Built With Love">
-  <img src="https://forthebadge.com/images/badges/made-with-javascript.svg" alt="Made With JavaScript">
-  <img src="https://forthebadge.com/images/badges/contains-technical-debt.svg" alt="Contains Technical Debt">
-  <br>
-  <img alt="GitHub package.json dependency version (prod)" src="https://img.shields.io/github/package-json/dependency-version/jakobbouchard/yadob/discord.js?style=for-the-badge">
-  <img alt="GitHub code size in bytes" src="https://img.shields.io/github/languages/code-size/jakobbouchard/yadob?style=for-the-badge">
-  <img alt="GitHub package.json version" src="https://img.shields.io/github/package-json/v/jakobbouchard/yadob?style=for-the-badge">
-  <a href="https://gitpod.io/#https://github.com/jakobbouchard/yadob" title="Gitpod Ready-to-code">
-    <img src="https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=gitpod&style=for-the-badge" alt="Gitpod Ready-to-code">
-  </a>
-</div>
+![Built With Love](https://forthebadge.com/images/badges/built-with-love.svg "Built With Love")
+![Made With JavaScript](https://forthebadge.com/images/badges/made-with-javascript.svg "Made With JavaScript")
+![Contains Technical Debt](https://forthebadge.com/images/badges/contains-technical-debt.svg "Contains Technical Debt")
+
+![discord.js dependency version](https://img.shields.io/github/package-json/dependency-version/jakobbouchard/yadob/discord.js?style=for-the-badge "discord.js dependency version")
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/jakobbouchard/yadob?style=for-the-badge "GitHub code size in bytes")
+![package.json version](https://img.shields.io/github/package-json/v/jakobbouchard/yadob?style=for-the-badge "package.json version")
+[![Gitpod Ready-to-code](https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=gitpod&style=for-the-badge "Gitpod Ready-to-code")](https://gitpod.io/#https://github.com/jakobbouchard/yadob)
 
 # Requirements
 
