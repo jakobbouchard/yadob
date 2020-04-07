@@ -15,7 +15,7 @@ const colours = {
 };
 
 exports.info = async message => {
-  console.log(`${getTimestamp()} ${colours.info}[LOG]${colours.reset} ${message}`);
+  console.log(`${getTimestamp()} ${colours.info}[INFO]${colours.reset} ${message}`);
 };
 exports.success = async message => {
   console.log(`${getTimestamp()} ${colours.success}[OK]${colours.reset} ${message}`);
