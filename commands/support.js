@@ -25,6 +25,7 @@ exports.settings = {
 
 exports.info = {
   name: `support`,
+  category: `Core`,
   description: `Links the documentation as well as the issue form on GitHub.`,
   usage: `support`
 };

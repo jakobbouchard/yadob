@@ -36,6 +36,7 @@ exports.settings = {
 
 exports.info = {
   name: `reload`,
+  category: `Core`,
   description: `Reloads the commands.`,
   usage: `reload`
 };

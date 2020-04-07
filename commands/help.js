@@ -26,6 +26,35 @@ exports.run = async (client, message, args) => {
     return result;
   };
 
+  function listCommandsPerCategory() {
+    const categories = {};
+    const orderedCategories = {};
+    client.commands.each(command => {
+      let commandDescription = `**${prefix+command.info.name}** - ${command.info.description}\n`;
+      if (command.info.category in categories) {
+        if (!command.info.category.length) {
+          categories[`Misc`] += commandDescription;
+        } else {
+          categories[command.info.category] += commandDescription;
+        }
+      } else {
+        if (!command.info.category.length) {
+          categories[`Misc`] = commandDescription;
+        } else {
+          categories[command.info.category] = commandDescription;
+        }
+      }
+    });
+
+    Object.keys(categories).sort().forEach(key => {
+      orderedCategories[key] = categories[key];
+    });
+
+    Object.keys(orderedCategories).forEach(categoryName => {
+      embed.addField(categoryName, orderedCategories[categoryName]);
+    });
+  };
+
   if (args.length > 0) {
     if (args.length > 1) {
       embed.setDescription(`Please only specify one command at a time!`);
@@ -42,7 +71,8 @@ exports.run = async (client, message, args) => {
       }
     }
   } else {
-    embed.addField(`Commands`, listAllCommands());
+    // embed.addField(`Commands`, listAllCommands());
+    listCommandsPerCategory();
   }
 
   message.channel.send(embed).catch(err => log.error(err));
@@ -55,6 +85,7 @@ exports.settings = {
 
 exports.info = {
   name: `help`,
+  category: `Core`,
   description: `You’re already here... (Can also give info about other commands)`,
   usage: `help [command]`
 };

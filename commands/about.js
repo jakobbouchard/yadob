@@ -26,6 +26,7 @@ exports.settings = {
 
 exports.info = {
   name: `about`,
+  category: `Core`,
   description: `About the bot.`,
   usage: `about`
 };

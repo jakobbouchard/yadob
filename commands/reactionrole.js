@@ -137,6 +137,7 @@ exports.settings = {
 
 exports.info = {
   name: `reactionrole`,
+  category: `Guild`,
   description: `Creates a message with an embed using the specified settings in reactionrole.json.`,
   usage: `reactionrole`
 };

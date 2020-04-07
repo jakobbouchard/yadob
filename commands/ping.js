@@ -30,6 +30,7 @@ exports.settings = {
 
 exports.info = {
   name: `ping`,
+  category: `Core`,
   description: `Outputs the bot’s latency to Discord’s servers.`,
   usage: `ping`
 };
