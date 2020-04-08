@@ -1,6 +1,6 @@
 {
   "name": "yadob",
-  "version": "0.4.0-beta",
+  "version": "1.0.0",
   "description": "Yet Another Discord Open Bot",
   "main": "index.js",
   "dependencies": {
